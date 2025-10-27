@@ -1,0 +1,24 @@
+.site-header{
+    .navbar{
+        padding: 13px 0;
+            .brand-logo {
+                padding: 0px;
+                margin: 0;
+                img {
+                width: 214px;
+                }
+            }
+            .menu-bar{
+                .nav-link {
+                    font-weight: 400;
+                    font-size: 18px;
+                    color: $primary;
+                    line-height: 100%;
+                    padding: 0px 25px;
+                    &:hover {
+                        // color: $primary-color;
+                    }
+                }
+            }
+    }
+}
