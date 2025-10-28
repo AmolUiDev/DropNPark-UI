@@ -18,6 +18,7 @@ const Sidebar: React.FC = () => {
       <NavLink to="/admin/bookings" className="nav-link"><img src={side2}/><p>Bookings</p></NavLink>
       <NavLink to="/admin/reports" className="nav-link"><img src={side3}/><p>Reports</p></NavLink>
       <NavLink to="/admin/coupons" className="nav-link"><img src={side4}/><p>Coupons</p></NavLink>
+      <NavLink to="/admin/add-booking" className="nav-link"><img src={side4}/><p>Add Booking</p></NavLink>
       </div>
     </nav>
   );

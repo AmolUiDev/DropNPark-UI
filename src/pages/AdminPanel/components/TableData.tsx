@@ -6,6 +6,7 @@ import Calender from "./Calender";
 import ModelForm from "./ModelForm";
 import Serc from '../image/search.svg'
 import './TableData.scss'
+import { NavLink, useNavigate } from "react-router-dom";
 
 
 function TableData() {
@@ -51,7 +52,13 @@ function TableData() {
     { key: "type", label: "Type" },
     { key: "datetime", label: "Date & Time" },
     { key: "status", label: "Status" },
-    { key: "parkingSpot", label: "Parking Spot" }
+    { key: "service", label: "SERVICE" },
+    
+    { key: "parkingSpot", label: "Parking Spot" },
+    { key: "keyspot", label: "Key Spot" },
+    { key: "addons", label: "Add Ons" },
+    { key: "cardet", label: "CAR DETAILS" },
+    { key: "actions", label: "ACTIONS" },
   ];
 
    const initialData = {
@@ -63,9 +70,22 @@ function TableData() {
 
   };
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+   const navigate = useNavigate();
+
+  const goToAbout = () => {
+    navigate("/admin/add-booking");
   };
+
+   const newDriverOne = () => {
+    navigate("/admin/add-driver");
+  };
+
+   const newDriverTwo = () => {
+    navigate("/admin/add-supervisor");
+  };
+  // const handleOpenModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -88,7 +108,15 @@ function TableData() {
       <input type="text" placeholder="search" className="search-bx"/>
     </div>
     </div>
-    <button onClick={handleOpenModal} className="open-modal-btn">
+
+
+    
+<button onClick={goToAbout} className="open-modal-btn">+ Add New Booking</button>
+{/* <button onClick={newDriverOne} className="open-modal-btn">+ Add New Driver</button>
+<button onClick={newDriverTwo} className="open-modal-btn">+ Add New Supervisor</button> */}
+
+
+    {/* <button onClick={handleOpenModal} className="open-modal-btn">
        + Add New Booking
       </button>
       
@@ -98,7 +126,7 @@ function TableData() {
         onClose={handleCloseModal}
         onSubmit={handleFormSubmit}
         initialData={initialData}
-      />
+      /> */}
     </div>
 
     <div className="table-container">
@@ -116,6 +144,9 @@ function TableData() {
           </tr>
         </thead>
         <tbody>
+
+
+  
           {currentRows.map((row) => (
             <tr key={row.no}>
               <td>{row.no}</td>
@@ -125,7 +156,12 @@ function TableData() {
               <td>{row.type}</td>
               <td>{row.datetime}</td>
               <td>{row.status}</td>
+              <td>{row.service}</td>
               <td>{row.parkingSpot}</td>
+              <td>{row.keyspot}</td>
+              <td>{row.addons}</td>
+              <td>{row.cardet}</td>
+              <td>{row.actions}</td>
             </tr>
           ))}
         </tbody>

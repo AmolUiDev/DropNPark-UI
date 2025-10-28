@@ -20,7 +20,7 @@ const Calender: React.FC = () => {
           selected={selectedDate}
           onChange={(date: Date | null) => setSelectedDate(date)}
           dateFormat="yyyy-MM-dd"
-          placeholderText="This Week"
+          placeholderText="dd-mm-yyyy"
           className="input-field"
           calendarClassName="custom-datepicker"
           popperPlacement="bottom-start"

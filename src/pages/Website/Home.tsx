@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Container, Row, Col, Carousel } from "react-bootstrap";
+import { Button, Container, Row, Col, Carousel, Form } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import DatePicker from "react-datepicker";
 import FAQ from '../../components/faq'
 import Location from '../../img/location.svg';
 import call from '../../img/call.svg';
@@ -15,6 +16,12 @@ import service4 from '../../img/srvc4.svg';
 import service5 from '../../img/srvc5.svg';
 import service6 from '../../img/srvc6.svg';
 import achive from '../../img/achivement-img.jpg';
+import hero1 from '../../img/hero1.svg';
+import hero2 from '../../img/hero2.svg';
+import hero3 from '../../img/hero3.svg';
+import book1 from '../../img/bookf2.svg';
+import book2 from '../../img/bookf1.svg';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 const services = [
@@ -89,6 +96,22 @@ const testimonials: Testimonial[] = [
 
 
 const Home: React.FC = () => {
+  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
+  const [startDate, endDate] = dateRange;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log({
+      airport,
+      dropOff: startDate,
+      pickUp: endDate,
+    });
+    // validation example
+    if (!startDate || !endDate) {
+      alert("Please select both drop-off and pick-up date & time.");
+      return;
+    }
+  };
   const { ref, inView } = useInView({
     triggerOnce: true, // runs only once when visible
     threshold: 0.3,
@@ -100,6 +123,92 @@ const Home: React.FC = () => {
   };
   return (
   <div className="home-page">
+    <section className="hero-banner">
+      <Container>
+        <Row>
+          <Col md={6}>
+            <div className="hero-content">
+              <h1>Welcome to <span>DropNPark</span></h1>
+              <p>At DropNPark, we know that travel should begin with ease, not stress. That's why we've created an airport valet parking service that's as simple as it is reliable.</p>
+              <p>From the moment you arrive at the terminal, our courteous valet greets you, takes your vehicle, and handles the rest — so you can head straight to your flight without a second thought.</p>
+              <ul className="hero-list">
+                <li><span><img src={hero1} alt="24/7 icon" /></span>24/7 Available</li>
+                <li><span><img src={hero2} alt="secure" /></span>Secure Facility</li>
+                <li><span><img src={hero3} alt="curbside" /></span>Curbside Service</li>
+              </ul>
+            </div>
+          </Col>
+          <Col md={6}>
+          <div className="booking-form">
+            <h4>Book Your Premium Valet Parking</h4>
+            <Form>
+              <Form.Group>
+                <Form.Label>Airport Name *</Form.Label>
+                <div className="form-box">
+                <div className="icon">
+                <img src={book1} alt="location" />
+                </div>
+                <Form.Select
+                  
+                >
+                  <option>Toronto</option>
+                  <option>Vancouver</option>
+                  <option>Montreal</option>
+                </Form.Select>
+                </div>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Drop Off Date and Time *</Form.Label>
+                <div className="form-box">
+                <div className="icon">
+                  <img src={book2} alt="calender" />
+                </div>
+                <DatePicker
+              selected={startDate}
+              onChange={(update: Date | [Date | null, Date | null] | null) => {
+                // update will be either a Date (when single) or [start, end] when selectsRange
+                if (!update) {
+                  setDateRange([null, null]);
+                  return;
+                }
+                // cast to range
+                setDateRange(update as [Date | null, Date | null]);
+              }}
+              startDate={startDate}
+              endDate={endDate}
+              selectsRange
+              showTimeSelect
+              timeIntervals={15}
+              dateFormat="MMM dd, yyyy hh:mm aa"
+              placeholderText="Select drop-off and pick-up"
+              className="react-datepicker-input"
+            />
+                </div>
+              </Form.Group>
+
+              <Form.Group >
+                <Form.Label>Pick Up Date and Time *</Form.Label>
+                <div className="form-box">
+                <div className="icon">
+                  <img src={book2} alt="calender" />
+                </div>
+                <Form.Control
+                  type="datetime-local"
+                  required
+                />
+                </div>
+              </Form.Group>
+
+              <Button className="view-btn" type="submit">
+                VIEW RATES
+              </Button>
+            </Form>
+          </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
     <section className='section-testi-achivment section-padding pb-0'>
       <Container>
         <Row>

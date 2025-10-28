@@ -24,6 +24,9 @@ import Users from '@/pages/AdminPanel/pages/Users';
 import Bookings from '@/pages/AdminPanel/pages/Bookings';
 import Reports from '@/pages/AdminPanel/pages/Reports';
 import Coupons from '@/pages/AdminPanel/pages/Coupons';
+import AddNewBooking from './pages/AdminPanel/pages/AddNewBooking';
+import AddNewDriver from './pages/AdminPanel/pages/AddNewDriver';
+import AddNewSupervisor from './pages/AdminPanel/pages/AddNewSupervisor';
 
 
 const AppRoutes: React.FC = () => (
@@ -52,6 +55,9 @@ const AppRoutes: React.FC = () => (
       <Route path="bookings" element={<Bookings />} />
       <Route path="reports" element={<Reports />} />
       <Route path="coupons" element={<Coupons />} />
+      <Route path="add-booking" element={<AddNewBooking />} />
+      <Route path="add-driver" element={<AddNewDriver />} />
+      <Route path="add-supervisor" element={<AddNewSupervisor/>} />
     </Route>
 
   </Routes>
