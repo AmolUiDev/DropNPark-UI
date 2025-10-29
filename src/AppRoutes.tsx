@@ -17,6 +17,7 @@ import MyProfile from '@/pages/CustomerDashboard/MyProfile';
 
 
 import DriverDashboard from '@/pages/DriverDashboard/DriverDashboard';
+import DriverRegistration from '@/pages/DriverDashboard/DriverRegistration';
 
 import AdminLayout from '@/pages/AdminPanel/AdminLayout';
 import AdminDashboard from '@/pages/AdminPanel/pages/Dashboard';
@@ -46,6 +47,7 @@ const AppRoutes: React.FC = () => (
 
 
     <Route path='/dashboard' element={<DriverDashboard />} />
+    <Route path='/driverregistration' element={<DriverRegistration />} />
 
 
     <Route path="/admin" element={<AdminLayout />}>
